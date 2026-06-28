@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Qwen2.5-Coder Python Fine-tuning
 
 Fine-tuning [Qwen2.5-Coder-0.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-Coder-0.5B-Instruct) on a Python code generation dataset using QLoRA. The fine-tuned model is available on Hugging Face at [`KpRT/qwen-python-finetuned`](https://huggingface.co/KpRT/qwen-python-finetuned).
@@ -233,3 +234,6 @@ streamlit run streamlit_developer.py
 ## License
 
 This project is released under the MIT License. The base model is subject to [Qwen's model license](https://huggingface.co/Qwen/Qwen2.5-Coder-0.5B-Instruct/blob/main/LICENSE).
+=======
+# Qlora-fineTunning
+>>>>>>> 5aabd6d42c55c4ea459a58c8f797b57e9a1739b0
