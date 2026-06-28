@@ -1,0 +1,74 @@
+# Training Configuration for QLoRA Fine-tuning
+
+# Model
+model_name: "Qwen/Qwen2.5-Coder-0.5B-Instruct"
+model_max_length: 512
+
+# QLoRA Configuration
+use_qlora: true
+load_in_4bit: true
+bnb_4bit_quant_type: "nf4"
+bnb_4bit_compute_dtype: "bfloat16"  # Use bfloat16 for better stability
+
+# LoRA Hyperparameters
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+lora_target_modules:
+  - "q_proj"
+  - "v_proj"
+  - "k_proj"
+  - "o_proj"
+  - "gate_proj"
+  - "up_proj"
+  - "down_proj"
+
+# Training Hyperparameters
+num_train_epochs: 3
+per_device_train_batch_size: 4
+per_device_eval_batch_size: 4
+gradient_accumulation_steps: 4  # Effective batch size = 4 * 4 = 16
+learning_rate: 2.0e-4
+weight_decay: 0.01
+warmup_ratio: 0.03
+max_grad_norm: 0.3
+
+# Learning Rate Schedule
+lr_scheduler_type: "cosine"
+optim: "paged_adamw_8bit"  # Memory-efficient optimizer
+
+# Logging & Evaluation
+logging_steps: 10
+eval_strategy: "steps"  # Evaluate after each epoch
+eval_steps: 500
+save_strategy: "steps"
+save_steps: 500
+save_total_limit: 3  # Keep only last 3 checkpoints
+
+# Early Stopping (optional)
+load_best_model_at_end: true
+metric_for_best_model: "eval_loss"
+greater_is_better: false
+
+# Output
+output_dir: "training/outputs"
+run_name: "qwen-0.5b-python-qlora"
+
+# Weights & Biases
+report_to: "wandb"
+wandb_project: "qwen-python-finetuning"
+wandb_run_name: "qwen-0.5b-qlora-v1"
+
+# Hardware
+fp16: false
+bf16: true  # Better for training stability
+gradient_checkpointing: true  # Reduce memory usage
+
+# Data
+dataset_train: "data/datasets/train.json"
+dataset_val: "data/datasets/validation.json"
+
+# Misc
+seed: 42
+dataloader_num_workers: 4
+remove_unused_columns: false

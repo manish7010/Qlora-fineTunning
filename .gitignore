@@ -1,0 +1,32 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Environment variables and secrets
+.env
+
+# Project runtime and generated artifacts (not source-controlled)
+data/datasets
+logs/
+wandb/
+temp/
+docker/
+evaluation_advanced/results/comprehensive_eval/unused
+evaluation_advanced/results/llm_judge/unused
+evaluation_advanced/results/pass_at_k/unused
+!evaluation_advanced/results/README.md
+training/outputs
+training/outputs_*
+inference/merged_model
+inference/onnx_model
+
+setup.sh
+*.log
+

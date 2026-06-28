@@ -1,0 +1,12 @@
+{
+  "total_epochs": 3,
+  "final_train_loss": "N/A",
+  "best_eval_loss": 0.7542486786842346,
+  "total_steps": 3000,
+  "training_time": "N/A",
+  "train_samples": 16000,
+  "val_samples": 1000,
+  "syntax_validity": 95.2,
+  "pass_at_1": 54.4,
+  "verbosity_reduction": 95
+}
